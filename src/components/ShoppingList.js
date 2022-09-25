@@ -15,17 +15,15 @@ function ShoppingList({ items }) {
     setQueryInput(e.target.value.toLocaleUpperCase())
   }
 
-  console.log(queryInput)
-
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All") return true;
 
     return item.category === selectedCategory;
   });
-
+  
   return (
     <div className="ShoppingList">
-      <ItemForm />
+      <ItemForm items={items}/>
       <Filter onCategoryChange={handleCategoryChange} onSearchChange={handleInputChange}/>
       <ul className="Items">
         {itemsToDisplay.filter((query) => query.name.toUpperCase().includes(queryInput)).map((item) => (
